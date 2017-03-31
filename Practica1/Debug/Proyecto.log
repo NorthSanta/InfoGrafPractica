@@ -1,4 +1,6 @@
 ﻿  main.cpp
-d:\practica1\src\main.cpp(58): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-  Proyecto.vcxproj -> D:\Practica1\Debug\Practica1.exe
-  Proyecto.vcxproj -> D:\Practica1\Debug\Practica1.pdb (Full PDB)
+c:\users\xdevesa\source\repos\infografpractica\practica1\src\main.cpp(56): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+c:\users\xdevesa\source\repos\infografpractica\practica1\src\main.cpp(122): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\xdevesa\source\repos\infografpractica\practica1\src\main.cpp(124): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Proyecto.vcxproj -> C:\Users\xdevesa\Source\Repos\InfoGrafPractica\Practica1\Debug\Practica1.exe
+  Proyecto.vcxproj -> C:\Users\xdevesa\Source\Repos\InfoGrafPractica\Practica1\Debug\Practica1.pdb (Full PDB)

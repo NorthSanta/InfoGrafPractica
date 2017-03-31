@@ -11,10 +11,8 @@ using namespace glm;
 using namespace std;
 const GLint WIDTH = 800, HEIGHT = 600;
 bool WIDEFRAME = false;
-float vertex1 = -0.5;
-float vertex2 = 0.5;
-
-
+float vertex1 = 0.5;
+float vertex2 = -0.5;
 
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -73,6 +71,7 @@ int main() {
 		0.5,1,0,
 		vertex2,0,0
 	};*/
+	
 	GLint Element[]{
 		0,1,3,
 		1,2,3
@@ -120,34 +119,10 @@ int main() {
 	//bucle de dibujado
 		while (!glfwWindowShouldClose(window))
 		{
-			/*float time = glfwGetTime();
+			float time = glfwGetTime();
 			vertex1 = abs(sin(time)/2) - 1;
 			vertex2 = abs(cos(time)/2) + 0.5;
-			
-			printf("%f\n", vertex2);
-			printf("%f\n", vertex1);
-			GLfloat Vertex[]{
-				vertex1,0,0,
-				-0.5,1,0,
-				0.5,1,0,
-				vertex2,0,0
-			};
 		
-
-			// Definir el EBO
-			
-			// Crear los VBO, VAO y EBO
-			
-
-			//Establecer el objeto
-			glBindVertexArray(VAO);
-			//Declarar el VBO y el EBO
-			glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex), Vertex, GL_STATIC_DRAW);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GL_FLOAT), (GLvoid*)0);
-			glEnableVertexAttribArray(0);
-			//liberar el buffer
-			glBindVertexArray(0);*/
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			//definir la matriz de proyeccion
