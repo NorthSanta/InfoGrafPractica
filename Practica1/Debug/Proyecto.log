@@ -1,6 +1,13 @@
 ﻿  main.cpp
-c:\users\xdevesa\source\repos\infografpractica\practica1\src\main.cpp(56): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-c:\users\xdevesa\source\repos\infografpractica\practica1\src\main.cpp(122): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\xdevesa\source\repos\infografpractica\practica1\src\main.cpp(124): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Proyecto.vcxproj -> C:\Users\xdevesa\Source\Repos\InfoGrafPractica\Practica1\Debug\Practica1.exe
-  Proyecto.vcxproj -> C:\Users\xdevesa\Source\Repos\InfoGrafPractica\Practica1\Debug\Practica1.pdb (Full PDB)
+c:\users\xdevesa\source\repos\work\practica1\src\main.cpp(57): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+  Shader.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+libSOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'libSOIL.lib(image_DXT.obj)' or at 'C:\Users\xdevesa\Source\Repos\Work\Practica1\Debug\SOIL.pdb'; linking object as if no debug info
+libSOIL.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'libSOIL.lib(image_helper.obj)' or at 'C:\Users\xdevesa\Source\Repos\Work\Practica1\Debug\SOIL.pdb'; linking object as if no debug info
+libSOIL.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'libSOIL.lib(SOIL.obj)' or at 'C:\Users\xdevesa\Source\Repos\Work\Practica1\Debug\SOIL.pdb'; linking object as if no debug info
+libSOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'libSOIL.lib(stb_image_aug.obj)' or at 'C:\Users\xdevesa\Source\Repos\Work\Practica1\Debug\SOIL.pdb'; linking object as if no debug info
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\xdevesa\Source\Repos\Work\Practica1\Debug\vc120.pdb'; linking object as if no debug info
+  Proyecto.vcxproj -> C:\Users\xdevesa\Source\Repos\Work\Practica1\Debug\Practica1.exe
+  Proyecto.vcxproj -> C:\Users\xdevesa\Source\Repos\Work\Practica1\Debug\Practica1.pdb (Full PDB)
