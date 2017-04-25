@@ -23,6 +23,15 @@ float mixed;
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
 Shader* shade;
+
+mat4 matrix = {
+	1,0,0,0,
+	0,1,0,0,
+	0,0,1,0,
+	0,0,0,1
+
+};
+
 int main() {
 	//initGLFW
 //TODO
@@ -62,7 +71,7 @@ int main() {
 	
 	//cargamos los shader
 	shade = new Shader("./src/textureVertex.vertexshader", "./src/textureFragment.fragmentshader");
-	//GLint variableShader = glGetUniformLocation(shade->Program, "shade");
+	
 
 	GL_MAX_VERTEX_ATTRIBS;
 	GLint nrAttributes;
@@ -103,6 +112,11 @@ int main() {
 		3,2,1
 		
 	};
+
+
+	
+	mat4 scalar = scale(matrix, vec3(0.5f, -0.5f, 0));
+	mat4 translation = translate(matrix, vec3(0.5f, 0.5f, 0));
 	
 	/*GLfloat VertexBufferObject[] = {
 		0.5f,  0.5f, 0.0f,  // Top Right
@@ -155,7 +169,6 @@ int main() {
 		
 
 		
-
 		
 	//bucle de dibujado
 		while (!glfwWindowShouldClose(window))
@@ -185,12 +198,20 @@ int main() {
 				//glBindVertexArray(0);
 				
 			}*/
+			
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, texture);
 			glUniform1i(glGetUniformLocation(shade->Program, "ourTexture"), 0);
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, texture2);
 			glUniform1i(glGetUniformLocation(shade->Program, "ourTexture2"), 1);
+			
+			GLint variableTrans = glGetUniformLocation(shade->Program, "translation");
+			glUniformMatrix4fv(variableTrans, 1, GL_FALSE, value_ptr(translation));
+			GLint variableScale = glGetUniformLocation(shade->Program, "scalar");
+			glUniformMatrix4fv(variableScale, 1, GL_FALSE, value_ptr(scalar));
+			/*GLint variableRot = glGetUniformLocation(shade->Program, "rotation");
+			glUniformMatrix4fv(variableScale, 1, GL_FALSE, value_ptr(rotation));*/
 
 			//glBindTexture(GL_TEXTURE_2D, texture);
 			//glBindTexture(GL_TEXTURE_2D, texture2);
@@ -227,7 +248,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		//cout << "pressed" << endl;
 	}
 	if (key == GLFW_KEY_UP) {
-		cout << "up";
+	//	cout << "up";
 		mixed += 0.1;
 		if (mixed >= 1) {
 			mixed = 1;
@@ -236,13 +257,29 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		glUniform1f(mixedShade, mixed);
 	}
 	else if (key == GLFW_KEY_DOWN) {
-		cout << "down";
+	//	cout << "down";
 		mixed -= 0.1;
 		if (mixed <= 0) {
 			mixed = 0;
 		}
 		GLfloat mixedShade = glGetUniformLocation(shade->Program, "mixed");
 		glUniform1f(mixedShade, mixed);
+	}
+	if (key == GLFW_KEY_RIGHT) {
+
+		mat4 rotation = rotate(matrix, 1.0f, glm::vec3(1.0, 1.0, 0.0));
+
+		GLint variableRot = glGetUniformLocation(shade->Program, "rotation");
+		glUniformMatrix4fv(variableRot, 1, GL_FALSE, value_ptr(rotation));
+		
+	}
+	else if (key == GLFW_KEY_LEFT) {
+		
+		mat4 rotation = rotate(matrix, -1.0f, glm::vec3(1.f,0.f, 0.0));
+
+		GLint variableRot = glGetUniformLocation(shade->Program, "rotation");
+		glUniformMatrix4fv(variableRot, 1, GL_FALSE, value_ptr(rotation));
+		
 	}
 }
 
