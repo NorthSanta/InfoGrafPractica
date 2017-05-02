@@ -1,10 +1,4 @@
 ﻿  main.cpp
-d:\practica1\src\main.cpp(70): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-d:\practica1\src\main.cpp(252): warning C4305: '+=': truncation from 'double' to 'float'
-d:\practica1\src\main.cpp(256): warning C4244: 'initializing': conversion from 'GLint' to 'GLfloat', possible loss of data
-d:\practica1\src\main.cpp(257): warning C4244: 'argument': conversion from 'GLfloat' to 'GLint', possible loss of data
-d:\practica1\src\main.cpp(261): warning C4305: '-=': truncation from 'double' to 'float'
-d:\practica1\src\main.cpp(265): warning C4244: 'initializing': conversion from 'GLint' to 'GLfloat', possible loss of data
-d:\practica1\src\main.cpp(266): warning C4244: 'argument': conversion from 'GLfloat' to 'GLint', possible loss of data
-  Proyecto.vcxproj -> D:\Practica1\Debug\Practica1.exe
-  Proyecto.vcxproj -> D:\Practica1\Debug\Practica1.pdb (Full PDB)
+f:\practica1\src\main.cpp(76): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+  Proyecto.vcxproj -> F:\Practica1\Debug\Practica1.exe
+  Proyecto.vcxproj -> F:\Practica1\Debug\Practica1.pdb (Full PDB)
