@@ -23,6 +23,14 @@ float rot;
 float angleX, angleY;
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
+GLfloat dt;
+GLfloat lastFrame;
+
+vec3 apuntPos = vec3(0);
+vec3 cameraPos = vec3(0,0,3);
+vec3 cameraFront = vec3(0.0f, 0.0f, -1.0f);
+vec3 cameraUp;
+vec3 cameraRight;
 Shader* shade;
 mat4 finalMatrix;
 mat4 matrix = {
@@ -38,6 +46,34 @@ mat4 vision;
 mat4 model;
 GLuint texture;
 GLuint texture2;
+bool keys[1024];
+void do_movement() {
+	GLfloat cameraSpeed = 1.f*dt;
+	if (keys[GLFW_KEY_W])
+		cameraPos += cameraSpeed * cameraFront;
+	if (keys[GLFW_KEY_S])
+		cameraPos -= cameraSpeed * cameraFront;
+	if (keys[GLFW_KEY_A])
+		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+	if (keys[GLFW_KEY_D])
+		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+}
+
+void do_Rotation() {
+	GLfloat cameraSpeed = 1.f*dt;
+	if (keys[GLFW_KEY_LEFT])
+		angleY += 1;
+	if (keys[GLFW_KEY_RIGHT])
+		angleY -= 1;
+	if (keys[GLFW_KEY_UP])
+		angleX += 1;
+	if (keys[GLFW_KEY_DOWN])
+		angleX -= 1;
+}
+
+
+
+
 int main() {
 	//initGLFW
 //TODO
@@ -119,8 +155,8 @@ int main() {
 
 
 	
-	mat4 scalar = scale(matrix, vec3(0.5f, -0.5f, 0));
-	mat4 translation = translate(matrix, vec3(0.5f, 0.5f, 0));
+	/*mat4 scalar = scale(matrix, vec3(0.5f, -0.5f, 0));
+	mat4 translation = translate(matrix, vec3(0.5f, 0.5f, 0));*/
 
 	
 
@@ -228,11 +264,8 @@ int main() {
 
 		proj = perspective(FOV, AspectRatio, 0.1f, 100.f);
 		
-		vision = translate(vision, vec3(0, 0, -3));
+		vision = translate(vision, cameraPos);
 		
-		model = rotate(model, radians(50.f), glm::vec3(1.0f, 0.0f, 0.0));
-		model = translate(model, vec3(0, -0.5f, 0));
-		model = scale(model, vec3(1, 1, 1));
 		
 		//finalMatrix = proj*vision*model;
 
@@ -242,12 +275,25 @@ int main() {
 		glBindTexture(GL_TEXTURE_2D, texture);
 		glUniform1i(glGetUniformLocation(shade->Program, "ourTexture"), 0);
 
+		vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+		vec3 cameraDirection = glm::normalize(cameraPos - cameraFront);
+		vec3 cameraRight = normalize(cross(up, cameraFront));
+		cameraUp = cross(cameraDirection, cameraRight);
 	//bucle de dibujado
 		while (!glfwWindowShouldClose(window))
 		{
-			
+			GLfloat currentFrame = glfwGetTime();
+			dt = currentFrame - lastFrame;
+			lastFrame = currentFrame;
+
+			glfwPollEvents();
+			do_movement();
+			do_Rotation();
 			GLint proji = glGetUniformLocation(shade->Program, "proj");
 			glUniformMatrix4fv(proji, 1, GL_FALSE, value_ptr(proj));
+			//vec3 camVec = apuntPos - cameraPos;
+			vision = lookAt(cameraPos, cameraPos+cameraFront, cameraUp);
+
 			GLint visi = glGetUniformLocation(shade->Program, "vision");
 			glUniformMatrix4fv(visi, 1, GL_FALSE, value_ptr(vision));
 			/*GLint modeli = glGetUniformLocation(shade->Program, "model");
@@ -354,18 +400,27 @@ int main() {
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
 	//TODO, comprobar que la tecla pulsada es escape para cerrar la aplicación y la tecla w para cambiar a modo widwframe
+	if (action == GLFW_PRESS)
+		keys[key] = true;
+	else if (action == GLFW_RELEASE)
+		keys[key] = false;
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
-	else if (key == GLFW_KEY_W && action == GLFW_PRESS) {
-		WIDEFRAME = !WIDEFRAME;
-		
-	}
+	/*GLfloat cameraSpeed = 0.8f *dt;
+	if (key == GLFW_KEY_W)
+		cameraPos += cameraSpeed * cameraFront;
+	if (key == GLFW_KEY_S)
+		cameraPos -= cameraSpeed * cameraFront;
+	if (key == GLFW_KEY_A)
+		cameraPos -= glm::normalize(cross(cameraFront, cameraUp)) * cameraSpeed;
+	if (key == GLFW_KEY_D)
+		cameraPos += glm::normalize(cross(cameraFront, cameraUp)) * cameraSpeed;*/
 	//rotacion
-	if (key == GLFW_KEY_UP) {
+	/*if (key == GLFW_KEY_UP) {
 	
 		angleX -= 1;
 	}
-	else if (key == GLFW_KEY_DOWN) {
+	if (key == GLFW_KEY_DOWN) {
 	
 		angleX += 1;
 	}
@@ -374,11 +429,11 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		angleY += 1;
 		
 	}
-	else if (key == GLFW_KEY_LEFT) {
+	if (key == GLFW_KEY_LEFT) {
 		
 		angleY -= 1;
 		
-	}
+	}*/
 	//cambio textura
 	if (key == GLFW_KEY_1) {
 		glActiveTexture(GL_TEXTURE0);

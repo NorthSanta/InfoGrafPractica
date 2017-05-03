@@ -1,4 +1,5 @@
 ﻿  main.cpp
-f:\practica1\src\main.cpp(76): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+f:\practica1\src\main.cpp(112): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+f:\practica1\src\main.cpp(285): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   Proyecto.vcxproj -> F:\Practica1\Debug\Practica1.exe
   Proyecto.vcxproj -> F:\Practica1\Debug\Practica1.pdb (Full PDB)
