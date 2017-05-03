@@ -22,10 +22,11 @@ float mixed;
 float rot;
 float angleX, angleY;
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
-
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 GLfloat dt;
 GLfloat lastFrame;
-
+GLfloat lastX = 400, lastY = 300;
+GLfloat pitching = 0.0f, yawing = -90.0f;
 vec3 apuntPos = vec3(0);
 vec3 cameraPos = vec3(0,0,3);
 vec3 cameraFront = vec3(0.0f, 0.0f, -1.0f);
@@ -47,6 +48,7 @@ mat4 model;
 GLuint texture;
 GLuint texture2;
 bool keys[1024];
+bool firstMouse = true;
 void do_movement() {
 	GLfloat cameraSpeed = 1.f*dt;
 	if (keys[GLFW_KEY_W])
@@ -86,12 +88,12 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
-
+	
 	//create a window
 //TODO
 	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Window", nullptr, nullptr);
 	glfwMakeContextCurrent(window);
-
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glewExperimental = GL_TRUE;
 	//set GLEW and inicializate
 //TODO
@@ -103,6 +105,7 @@ int main() {
 	//set function when callback
 //TODO
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetCursorPosCallback(window, mouse_callback);
 	//set windows and viewport
 //TODO
 	
@@ -445,6 +448,41 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		glBindTexture(GL_TEXTURE_2D, texture2);
 		glUniform1i(glGetUniformLocation(shade->Program, "ourTexture"), 0);
 	}
+
+}
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	if (firstMouse)
+	{
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
+
+	GLfloat xoffset = lastX - xpos  ;
+	GLfloat yoffset =  ypos -lastY;
+	lastX = xpos;
+	lastY = ypos;
+
+	GLfloat sensitivity = 0.05;
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+	
+	yawing += xoffset;
+	pitching += yoffset;
+
+	if (pitching > 89.0f)
+		pitching = 89.0f;
+	if (pitching < -89.0f)
+		pitching = -89.0f;
+
+	vec3 front;
+	front.x = cos(radians(yawing)) * cos(radians(pitching));
+	front.y = sin(radians(pitching));
+	front.z = sin(radians(yawing)) * cos(radians(pitching));
+	cameraFront = normalize(front);
+	
 }
 
 

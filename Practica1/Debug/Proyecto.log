@@ -1,5 +1,12 @@
 ﻿  main.cpp
-f:\practica1\src\main.cpp(112): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
-f:\practica1\src\main.cpp(285): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+f:\practica1\src\main.cpp(115): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+f:\practica1\src\main.cpp(288): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+f:\practica1\src\main.cpp(458): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+f:\practica1\src\main.cpp(459): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+f:\practica1\src\main.cpp(463): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+f:\practica1\src\main.cpp(464): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+f:\practica1\src\main.cpp(465): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+f:\practica1\src\main.cpp(466): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+f:\practica1\src\main.cpp(468): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
   Proyecto.vcxproj -> F:\Practica1\Debug\Practica1.exe
   Proyecto.vcxproj -> F:\Practica1\Debug\Practica1.pdb (Full PDB)
