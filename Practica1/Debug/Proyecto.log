@@ -1,12 +1,14 @@
 ﻿  main.cpp
-f:\practica1\src\main.cpp(115): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
-f:\practica1\src\main.cpp(288): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-f:\practica1\src\main.cpp(458): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-f:\practica1\src\main.cpp(459): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-f:\practica1\src\main.cpp(463): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-f:\practica1\src\main.cpp(464): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-f:\practica1\src\main.cpp(465): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-f:\practica1\src\main.cpp(466): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-f:\practica1\src\main.cpp(468): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
-  Proyecto.vcxproj -> F:\Practica1\Debug\Practica1.exe
-  Proyecto.vcxproj -> F:\Practica1\Debug\Practica1.pdb (Full PDB)
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(115): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(288): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(458): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(459): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(463): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(464): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(465): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(466): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\usuario\documents\github\infografpractica\practica1\src\main.cpp(468): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+  Object.cpp
+  Generando código...
+c:\users\usuario\documents\github\infografpractica\practica1\object.cpp(70): error C4716: 'Object::GetModelMatrix': debe devolver un valor
+c:\users\usuario\documents\github\infografpractica\practica1\object.cpp(74): error C4716: 'Object::GetPosition': debe devolver un valor

@@ -62,7 +62,7 @@ void do_movement() {
 }
 
 void do_Rotation() {
-	GLfloat cameraSpeed = 1.f*dt;
+	
 	if (keys[GLFW_KEY_LEFT])
 		angleY += 1;
 	if (keys[GLFW_KEY_RIGHT])
@@ -254,7 +254,7 @@ int main() {
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 		glEnableVertexAttribArray(2);
 		//liberar el buffer
 	
